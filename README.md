@@ -37,4 +37,7 @@ NPM Packages for Node API are express, mongodb, mongoose, bcryptjs, validator, j
 NPM Packages for angular are none yet but we will install Angular Material and Bootstrap for UI development.
 
 Note - If you need to install another package discuss it with the team before doing that.
+
      - After completing your modules test it properly before raising a pull request.
+     
+     - Always pull changes before pushing your code to the server.
