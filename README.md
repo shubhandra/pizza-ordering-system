@@ -29,8 +29,11 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 ## Comments by Shubhandra
 
 Just run 'npm install' to install all the required packages in the root folder.
+
 Node API is in the 'backend' folder to run it type 'nodemon backend/app.js' and press enter. I have already configured the server and database so you donn't have to worry about it.
+
 NPM Packages for Node API are express, mongodb, mongoose, bcryptjs, validator, jsonwebtoken, Dotenv, Nodemon.
+
 NPM Packages for angular are none yet but we will install Angular Material and Bootstrap for UI development.
 
 Note - If you need to install another package discuss it with the team before doing that.
