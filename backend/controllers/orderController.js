@@ -1,37 +1,41 @@
 const Order = require("../Models/orderModel");
+const User = require('../models/userModel')
+
 
 
 //place Order Function Start Here..
 exports.place = async (req, res) => {
- 
-  const newOrder = new Order({
-    qty: req.body.qty,
-    size: req.body.size,
-    order_amount: req.body.order_amount,
-    payment_method: req.body.payment_method,
-    delivery_address: req.body.delivery_address,
-    userId: req.body.userId,
-    status:req.body.status
-  });
+    
+//   const newOrder = new Order({
+//     qty: req.body.qty,
+//     size: req.body.size,
+//     order_amount: req.body.order_amount,
+//     payment_method: req.body.payment_method,
+//     delivery_address: req.body.delivery_address,
+//     userId: req.user._id,
+//     status:req.body.status
+//   });
+
+    const objPizza = req.body;
+
+    const objPizzabody = objPizza.map(x => new Order(x));
 
   try {
-    const addOrder = await Order.create({
+   
+    const addOrder = await Promise.all(objPizzabody.map(x => x.save()));
 
-        qty: req.body.qty,
-        size: req.body.size,
-        order_amount: req.body.order_amount,
-        payment_method: req.body.payment_method,
-        delivery_address: req.body.delivery_address,
-        userId: req.body.userId,
-        status:req.body.status
-
+    const findUser = await User.findById(req.user._id);
+   
+    const objects = addOrder.filter(x => { 
+        findUser.orders.push(x);
     });
 
-    await addOrder.save();
-      
+    await findUser.save();
+    
+  //  await addOrder.save();
     res.status(200).json({
       status: "Success",
-      order: addOrder,
+      order: addOrder
     });
 
   } catch (err) {
@@ -70,6 +74,8 @@ exports.edit = async (req,res)=>{
 exports.update = async (req,res)=> {
 
     const getOrderUpdate = await Order.findOneAndUpdate(req.params.id, req.body, { new: true });
+
+    console.log(getOrderUpdate);
 
     if (!getOrderUpdate) return res.status(400).json({
         status: 'Fail',
@@ -152,6 +158,34 @@ exports.updateStatus = async (req,res)=> {
   
 }
 //end update
+
+//Get All orders Belong to User (Useing relationship one to many);
+exports.ordersUser  =  async (req,res)=>{
+       
+    const userOrders = await User.findById(req.user._id).populate('orders');
+    const getUserOrders = userOrders.orders;
+
+    if (!userOrders) return res.status(400).json({
+            status:'Fail',
+            message:'No Orders Found'
+    });
+
+    try{ 
+        
+         res.status(200).json({ 
+             success:'success',
+             getUserOrders
+         });
+
+    }catch(err){ 
+
+         res.status(200).json({ 
+             success:'fail',
+             message:'Not Orders Found'
+         });
+    }
+}
+//end here
 
 
 
