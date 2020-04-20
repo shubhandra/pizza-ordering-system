@@ -1,4 +1,6 @@
 const Pizza = require("./../models/pizzaModel");
+const auth = require("../middleware/auth");
+
 //*******************************Getting  Reading All documents*********************************************/
 exports.getAllPizza = async(req, res) => {
     try {
@@ -37,15 +39,20 @@ exports.getPizza = async(req, res) => {
 };
 
 //****************Creating or posting Document using Mongoose************** */
+
 exports.createPizza = async(req, res) => {
     try {
-        const newPizza = await Pizza.create(req.body);
-        res.status(201).json({
-            status: "success",
-            data: {
-                pizza: newPizza,
-            },
-        });
+        if (req.user.role === "admin") {
+            const newPizza = await Pizza.create(req.body);
+            res.status(201).json({
+                status: "success",
+                data: {
+                    pizza: newPizza,
+                },
+            });
+        } else {
+            res.send("Only admin can create pizza");
+        }
     } catch (err) {
         res.status(400).json({
             status: "fail",
@@ -57,17 +64,21 @@ exports.createPizza = async(req, res) => {
 //****************Updating or editing Document using Mongoose************** */
 exports.updatePizza = async(req, res) => {
     try {
-        const pizza = await Pizza.findByIdAndUpdate(req.params.id, req.body, {
-            new: true,
-            runValidators: true,
-        });
+        if (req.user.role === "admin") {
+            const pizza = await Pizza.findByIdAndUpdate(req.params.id, req.body, {
+                new: true,
+                runValidators: true,
+            });
 
-        res.status(201).json({
-            status: "success",
-            data: {
-                pizza,
-            },
-        });
+            res.status(201).json({
+                status: "success",
+                data: {
+                    pizza,
+                },
+            });
+        } else {
+            res.send("Only admin can update pizza");
+        }
     } catch (err) {
         res.status(400).json({
             status: "fail",
@@ -79,13 +90,17 @@ exports.updatePizza = async(req, res) => {
 //****************Deleting Document using Mongoose************** */
 exports.deletePizza = async(req, res) => {
     try {
-        const pizza = await Pizza.findByIdAndDelete(req.params.id);
-        res.status(204).json({
-            status: "success",
-            data: {
-                pizza,
-            },
-        });
+        if (req.user.role === "admin") {
+            const pizza = await Pizza.findByIdAndDelete(req.params.id);
+            res.status(204).json({
+                status: "success",
+                data: {
+                    pizza,
+                },
+            });
+        } else {
+            res.send("Only admin can delete pizza");
+        }
     } catch (err) {
         res.status(404).json({
             status: "fail",
