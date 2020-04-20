@@ -23,6 +23,10 @@ const pizzaSchema = new mongoose.Schema({
         type: Number,
         required: [true, "A pizza must have price"],
     },
+    quantity: {
+        type: Number,
+        required: [true, "A pizza must have quantity"],
+    },
     toppings: {
         type: String,
         required: [true, "A pizza must have topping"],
