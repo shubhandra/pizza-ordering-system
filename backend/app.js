@@ -1,14 +1,17 @@
-const express = require('express')
-require('dotenv').config()
-const port = process.env.PORT
-const userRouter = require('./routers/userRouter')
-require('./db/db')
+const express = require("express");
+require("dotenv").config();
+const port = process.env.PORT;
+const userRouter = require("./routers/userRouter");
+const pizzaRouter = require("./routers/pizzaRouter");
 
-const app = express()
+require("./db/db");
 
-app.use(express.json())
-app.use(userRouter)
+const app = express();
+
+app.use(express.json());
+app.use(userRouter);
 
 app.listen(port, () => {
-    console.log(`Server running on port ${port}`)
-})
+    console.log(`Server running on port ${port}`);
+});
+app.use("/pizzas", pizzaRouter);
