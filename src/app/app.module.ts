@@ -8,11 +8,16 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import {MatTableModule} from '@angular/material/table';
+import {MatSelectModule} from '@angular/material/select';
 import {MatIconModule} from '@angular/material/icon';
+import {MatPaginator} from '@angular/material/paginator';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { OrderComponent } from './components/order/order.component';
+import { ShowUserComponent } from './components/show-user/show-user.component';
 
 import { RegisterComponent } from './components/register/register.component';
 import { LoginComponent } from './components/login/login.component';
@@ -28,8 +33,13 @@ import { ManagepizzaComponent } from './components/managepizza/managepizza.compo
 @NgModule({
   declarations: [
     AppComponent,
+<<<<<<< HEAD
+    OrderComponent,
+    ShowUserComponent,
+=======
     PizzaComponent,
    
+>>>>>>> master
     RegisterComponent,
     LoginComponent,
     AdminDashboardComponent,
@@ -52,8 +62,10 @@ import { ManagepizzaComponent } from './components/managepizza/managepizza.compo
     MatInputModule,
     MatCheckboxModule,
     MatSnackBarModule,
-
-    MatIconModule
+    MatTableModule,
+    MatSelectModule,
+    MatIconModule,
+    MatPaginator
   ],
   providers: [],
   bootstrap: [AppComponent],

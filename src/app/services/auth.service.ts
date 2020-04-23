@@ -55,7 +55,13 @@ export class AuthService {
 
   // Http request to get all users list
   getAllUsers() {
-    return this.http.get(`${this.signUrl}/all`);
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type':  'application/json',
+        'Authorization': 'Bearer ' + this.token
+      })
+    };
+    return this.http.get(`${this.signUrl}/all`, httpOptions);      
   }
 
   //Http request to check whether a user is authentic or not

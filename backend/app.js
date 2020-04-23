@@ -1,7 +1,7 @@
 const express = require('express');
-var cors = require('cors')
 require('dotenv').config()
 const port = process.env.PORT
+const cors = require('cors');
 require('./db/db');
 
 //Import Routes Here
@@ -17,9 +17,9 @@ app.use(cors({ origin: 'http://localhost:4200' }));
 //app.use(cors());
 
 //routes  start from here..
-app.use('/order/',routes);
+app.use('/order/',cors(),routes);
 app.use("/pizzas", pizzaRouter);
-app.use(userRouter);
+app.use(cors(),userRouter);
 
 app.listen(port, () => {
     console.log(`Server running on port ${port}`);

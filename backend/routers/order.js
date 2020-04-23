@@ -13,6 +13,7 @@ router.delete('/delete/:id',auth,order.delete);
 router.post('/get-orders',auth,order.ordersUser);
 
 router.patch('/updateStatus/:id',order.updateStatus);//Admin AUTH REQUIRED
+router.get('/allorders',order.getAllOrders);//Admin AUTH REQUIRED
 
 
 //export router 
