@@ -59,6 +59,27 @@ exports.createPizza = async(req, res) => {
             message: err,
         });
     }
+
+
+   
+
+    // try {
+      
+    //         const newPizza = await Pizza.create(req.body);
+    //         res.status(201).json({
+    //             status: "success",
+    //             data: {
+    //                 pizza: newPizza,
+    //             },
+    //         });
+       
+    // } catch (err) {
+    //     res.status(400).json({
+    //         status: "fail",
+    //         message: err,
+    //     });
+    // }
+
 };
 
 //****************Updating or editing Document using Mongoose************** */
@@ -89,6 +110,8 @@ exports.updatePizza = async(req, res) => {
 
 //****************Deleting Document using Mongoose************** */
 exports.deletePizza = async(req, res) => {
+
+  
     try {
         if (req.user.role === "admin") {
             const pizza = await Pizza.findByIdAndDelete(req.params.id);
