@@ -2,6 +2,11 @@
   <mat-toolbar-row>
     <a class="page-title" routerLink="/">{{title}}</a>
     <span class="spacer"></span>
+    <span *ngIf='currentUser'>
+      <span class="small">Welcome <span class="user-name">{{currentUser.name}}</span></span>&nbsp;&nbsp;
+      <mat-icon aria-hidden="false" class="shopping-cart" aria-label="Example home icon">shopping_cart</mat-icon>
+      <button mat-button (click)='logout()'> Logout</button>
+    </span>
   </mat-toolbar-row>
 </mat-toolbar>
 
