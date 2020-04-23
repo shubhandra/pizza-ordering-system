@@ -17,12 +17,12 @@ export class ShowUserComponent implements OnInit {
   // users: [];
   displayedColumns: string[] = ['role', 'staus', 'name','email'];
 
-  @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
+  // @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
 
   constructor(private authService: AuthService) { }
 
   ngOnInit(): void {
-    this.dataSource.paginator = this.paginator;
+    // this.dataSource.paginator = this.paginator;
     this.getUsers();
   }
 
