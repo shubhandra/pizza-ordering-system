@@ -6,3 +6,13 @@
 .spacer {
   flex: 1 1 auto;
 }
+
+.user-name {
+  font-weight: 500;
+  text-transform: capitalize;
+  color: #ffd700;
+}
+
+.shopping-cart {
+  vertical-align: middle;
+}

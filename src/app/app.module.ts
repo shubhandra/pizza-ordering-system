@@ -8,15 +8,25 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import {MatIconModule} from '@angular/material/icon';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { PizzaListComponent } from './components/pizza-list/pizza-list.component';
-import { PizzaComponent } from './components/pizza-list/pizza/pizza.component';
+
+import { RegisterComponent } from './components/register/register.component';
+import { LoginComponent } from './components/login/login.component';
+import { UserDashboardComponent } from './components/user-dashboard/user-dashboard.component';
+import { AdminDashboardComponent } from './components/admin-dashboard/admin-dashboard.component';
 
 @NgModule({
-  declarations: [AppComponent, PizzaListComponent, PizzaComponent],
+  declarations: [
+    AppComponent,
+    RegisterComponent,
+    LoginComponent,
+    AdminDashboardComponent,
+    UserDashboardComponent
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -29,6 +39,8 @@ import { PizzaComponent } from './components/pizza-list/pizza/pizza.component';
     MatInputModule,
     MatCheckboxModule,
     MatSnackBarModule,
+
+    MatIconModule
   ],
   providers: [],
   bootstrap: [AppComponent],

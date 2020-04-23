@@ -1,4 +1,5 @@
 const express = require('express');
+var cors = require('cors')
 require('dotenv').config()
 const port = process.env.PORT
 require('./db/db');
@@ -10,6 +11,7 @@ const pizzaRouter = require("./routers/pizzaRouter");
 
 const app = express();
 app.use(express.json());
+app.use(cors());
 
 //routes  start from here..
 app.use('/order/',routes);
