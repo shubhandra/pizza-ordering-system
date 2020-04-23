@@ -41,6 +41,7 @@ exports.getPizza = async(req, res) => {
 //****************Creating or posting Document using Mongoose************** */
 
 exports.createPizza = async(req, res) => {
+   // console.log(req.user);
     try {
         if (req.user.role === "admin") {
             const newPizza = await Pizza.create(req.body);
@@ -59,26 +60,6 @@ exports.createPizza = async(req, res) => {
             message: err,
         });
     }
-
-
-   
-
-    // try {
-      
-    //         const newPizza = await Pizza.create(req.body);
-    //         res.status(201).json({
-    //             status: "success",
-    //             data: {
-    //                 pizza: newPizza,
-    //             },
-    //         });
-       
-    // } catch (err) {
-    //     res.status(400).json({
-    //         status: "fail",
-    //         message: err,
-    //     });
-    // }
 
 };
 

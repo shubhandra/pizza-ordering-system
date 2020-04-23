@@ -35,6 +35,17 @@ export class PizzaComponent implements OnInit {
     "Barbeque Chicken",
     "Chicken Mexicana",
 ];
+
+toppingList= [
+  "Black Olives",
+  "Crisp Capsicum",
+  "Golden Corn",
+  "Fresh Tomato",
+  "Chunky Chicken",
+  "Zesty chicken Sausage",
+  "Hot N Spicy Chicken",
+  "Extra Cheese",
+];
   
   ngOnInit(): void {
 
@@ -46,11 +57,11 @@ export class PizzaComponent implements OnInit {
       this.dynamicArray.push(this.newDynamic);  
 
       this.pizzaForm = this.fb.group({
-        name: ['', Validators.required],
-        size: ['', Validators.required],
-        price: ['', Validators.required],
-        toppings:['',Validators.required],
-        quantity:['',Validators.required]
+        name: [''],
+        size: [''],
+        price: [''],
+        toppings:[''],
+        quantity:['']
     });
 
   }
@@ -64,12 +75,6 @@ export class PizzaComponent implements OnInit {
   }
 
 
-  // addRow() {    
-  //   this.newDynamic = {name: "", size: "",price:""};  
-  //   this.dynamicArray.push(this.newDynamic);  
-  //   console.log(this.dynamicArray);  
-  //   return true;  
-  // }  
 
   addRow() {    
 
@@ -77,17 +82,9 @@ export class PizzaComponent implements OnInit {
      control.push(this.initItem());
     }  
 
-//   deleteRow(index) {  
-//     if(this.dynamicArray.length ==1) {  
-//         return false;  
-//     } else {  
-//         this.dynamicArray.splice(index, 1);  
-//         return true;  
-//     }  
-// }  
-
 get f() { return this.pizzaForm.controls; }
 
+/***********Add Pizza Function  */
   addPizza(){ 
 
       this.submitted = true;
@@ -103,8 +100,13 @@ get f() { return this.pizzaForm.controls; }
 
       this.pizzaService.savePizza(this.pizza).subscribe(r=> { 
         if(r=== true){ 
-          console.log(r);
-          this.router.navigate(['/pizza']);
+        
+          //Load PIZZA LIST WHEN NEW PIZZA ADDED
+          this.pizzaService.getAllPizza().subscribe(r=>{ 
+            this.allPizza = r.data.pizzas;
+             });
+             //
+
         }else{ 
           alert("Something Wrong");
         }
@@ -124,12 +126,15 @@ get f() { return this.pizzaForm.controls; }
     var idAttr = target.attributes.id;
     var value = idAttr.nodeValue;
     
-    console.log(value);
-
     this.pizzaService.deletePizza(value).subscribe(r=> { 
+
       if(r=== true){ 
         console.log(r);
-        this.router.navigate(['/pizza']);
+        //Load PIZZA LIST WHEN PIZZA Deleted
+        this.pizzaService.getAllPizza().subscribe(r=>{ 
+          this.allPizza = r.data.pizzas;
+           });
+           //
       }
     },
     error => {
