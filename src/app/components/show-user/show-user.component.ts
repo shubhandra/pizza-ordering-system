@@ -14,7 +14,7 @@ import { AuthService } from '../../services/auth.service';
 export class ShowUserComponent implements OnInit {
 
   dataSource; 
-  users: ShowUser[];
+  users = [];
   // users: [];
   displayedColumns: string[] = ['role', 'staus', 'orders', 'name','email'];
 
@@ -33,7 +33,7 @@ export class ShowUserComponent implements OnInit {
       result => {
         console.log("result", result);
           this.users = result;
-          this.dataSource = new MatTableDataSource(this.orders);                
+          this.dataSource = new MatTableDataSource(this.users);                
       },
       err => console.log(err)
     )

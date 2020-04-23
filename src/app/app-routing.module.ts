@@ -19,7 +19,7 @@ const routes: Routes = [
   { path: 'admin-dashboard', component: AdminDashboardComponent },
   { path: 'user-dashboard', component: UserDashboardComponent },
   {path:'order', component:OrderComponent},
-  {path: 'showusers', component: ShowUserComponent}
+  {path: 'showusers', component: ShowUserComponent},
   { path: 'pizzas', component: PizzaListComponent }
 
 ];
