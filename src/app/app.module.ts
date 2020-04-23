@@ -6,7 +6,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
-import {MatCheckboxModule} from '@angular/material/checkbox';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import {MatTableModule} from '@angular/material/table';
 import {MatSelectModule} from '@angular/material/select';
@@ -17,10 +17,13 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { OrderComponent } from './components/order/order.component';
 import { ShowUserComponent } from './components/show-user/show-user.component';
+
 import { RegisterComponent } from './components/register/register.component';
 import { LoginComponent } from './components/login/login.component';
 import { UserDashboardComponent } from './components/user-dashboard/user-dashboard.component';
 import { AdminDashboardComponent } from './components/admin-dashboard/admin-dashboard.component';
+import { PizzaListComponent } from './components/pizza-list/pizza-list.component';
+import { PizzaComponent } from './components/pizza-list/pizza/pizza.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +33,9 @@ import { AdminDashboardComponent } from './components/admin-dashboard/admin-dash
     RegisterComponent,
     LoginComponent,
     AdminDashboardComponent,
-    UserDashboardComponent
+    UserDashboardComponent,
+    PizzaListComponent,
+    PizzaComponent,
   ],
   imports: [
     BrowserModule,
@@ -49,6 +54,6 @@ import { AdminDashboardComponent } from './components/admin-dashboard/admin-dash
     MatIconModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
