@@ -1,0 +1,43 @@
+<mat-card class="mb-4 mt-4 shadow">
+    <strong> {{pizza.name}}</strong> 
+    <div class="d-flex">
+
+        <mat-form-field class="col-sm-6">
+            <mat-label>Size</mat-label>
+            <select matNativeControl [(ngModel)]="selectedSize" required id="size">
+        <option value="small">Small</option>
+        <option value="medium">Medium</option>
+        <option value="large">Large</option>
+      </select>
+        </mat-form-field>
+        <mat-form-field class="col-sm-6">
+
+            <mat-label>Toppings</mat-label>
+            <select matNativeControl [(ngModel)]="selectedTopping" required id="toppings">
+        <option value="Black Olives">Black Olives</option>
+        <option value="Crisp Capsicum">Crisp Capsicum</option>
+        <option value="Golden Corn">Golden Corn</option>
+        <option value="Fresh Tomato">Fresh Tomato</option>
+        <option value="Chunky Chicken">Chunky Chicken</option>
+        <option value="Zesty chicken Sausage">Zesty chicken Sausage</option>
+        <option value="Hot N Spicy Chicken">Hot N Spicy Chicken</option>
+        <option value="Extra Cheese">Extra Cheese</option>
+
+
+
+      </select>
+        </mat-form-field>
+    </div>
+
+    <mat-form-field class="col-sm-4">
+        <mat-label>Quantity</mat-label>
+        <input matInput #quantity (keyup)="onKey($event)" [(ngModel)]="qty">
+    </mat-form-field>
+    <!-- <input type="text" (keyup)="onKey($event)"> -->
+
+
+    <div>
+        <button mat-raised-button color="primary">Add Pizza</button>
+
+    </div>
+</mat-card>

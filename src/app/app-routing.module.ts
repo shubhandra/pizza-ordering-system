@@ -4,8 +4,9 @@ import { RegisterComponent } from './components/register/register.component';
 import { LoginComponent } from './components/login/login.component';
 import { AdminDashboardComponent } from './components/admin-dashboard/admin-dashboard.component';
 import { UserDashboardComponent } from './components/user-dashboard/user-dashboard.component';
-import { PizzaComponent } from './components/pizza/pizza.component';
 import { PizzaEditComponent } from './components/pizza-edit/pizza-edit.component';
+import { PizzaListComponent } from './components/pizza-list/pizza-list.component';
+import { ManagepizzaComponent } from './components/managepizza/managepizza.component';
 
 
 const routes: Routes = [
@@ -14,12 +15,14 @@ const routes: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: 'admin-dashboard', component: AdminDashboardComponent },
   { path: 'user-dashboard', component: UserDashboardComponent },
-  { path: 'pizza', component: PizzaComponent },
+  { path: 'pizza', component: ManagepizzaComponent },
   { path: 'pizza/:id', component: PizzaEditComponent },
+  { path: 'pizzas', component: PizzaListComponent }
+
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

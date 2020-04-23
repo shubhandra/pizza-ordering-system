@@ -1,18 +1,19 @@
+
 import { Component, OnInit, ComponentFactoryResolver } from '@angular/core';
-import { PizzaService } from 'src/app/services/pizza.service';
 import { FormBuilder, FormGroup, FormArray, FormControl, Validators } from '@angular/forms';
 import { Pizza } from 'src/app/models/pizza.model';
 import { Router } from '@angular/router';
+import { PizzaserviceService } from 'src/app/services/pizzaservice.service';
 
 @Component({
-  selector: 'app-pizza',
-  templateUrl: './pizza.component.html',
-  styleUrls: ['./pizza.component.css']
+  selector: 'app-managepizza',
+  templateUrl: './managepizza.component.html',
+  styleUrls: ['./managepizza.component.css']
 })
-export class PizzaComponent implements OnInit {
+export class ManagepizzaComponent implements OnInit {
 
   constructor( 
-    private pizzaService:PizzaService,
+    private pizzaService:PizzaserviceService,
     private fb: FormBuilder,
     private router:Router
   ) { }
@@ -148,3 +149,4 @@ get f() { return this.pizzaForm.controls; }
  
 
 }
+
