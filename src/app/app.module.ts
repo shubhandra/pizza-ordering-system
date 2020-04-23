@@ -18,6 +18,8 @@ import { RegisterComponent } from './components/register/register.component';
 import { LoginComponent } from './components/login/login.component';
 import { UserDashboardComponent } from './components/user-dashboard/user-dashboard.component';
 import { AdminDashboardComponent } from './components/admin-dashboard/admin-dashboard.component';
+import { PizzaListComponent } from './components/pizza-list/pizza-list.component';
+import { PizzaComponent } from './components/pizza-list/pizza/pizza.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +27,9 @@ import { AdminDashboardComponent } from './components/admin-dashboard/admin-dash
     RegisterComponent,
     LoginComponent,
     AdminDashboardComponent,
-    UserDashboardComponent
+    UserDashboardComponent,
+    PizzaListComponent,
+    PizzaComponent,
   ],
   imports: [
     BrowserModule,
