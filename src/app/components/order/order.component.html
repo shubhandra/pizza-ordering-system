@@ -4,6 +4,8 @@
   </li>
 </ul> -->
 
+<button [routerLink]="['/admin-dashboard']" mat-raised-button color="primary">Dashboard</button>
+<br>
 <mat-form-field>
     <mat-label>Filter</mat-label>
     <input matInput (keyup)="applyFilter($event)" placeholder="Ex. ium">
@@ -72,5 +74,4 @@
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
   </table>
-<h1>hello</h1>
   {{clickMessage}}
