@@ -1,0 +1,79 @@
+<!-- <div class="pb-1 mt-2"><button class="btn btn-sm btn-primary float-right">Add Topping</button> <button class="btn btn-sm btn-warning float-right" (click)="addRow()">Add Pizza</button></div><br> -->
+
+
+
+<form [formGroup]="pizzaForm" (ngSubmit)="addPizza()" class="mt-5 border bg-light p-3">
+    <div class="col-md-12">
+        <div class="row">
+           <div class="col-md-2"><select class="form-control" formControlName="name">
+               <option *ngFor="let pizaaName of pizzaList" value="{{pizaaName}}">{{pizaaName}}</option>
+              
+           </select>
+          </div>
+        <div class="col-md-2"><select class="form-control" formControlName="size">
+            <option value="small">small</option>
+            <option value="medium">medium</option>
+            <option value="large">large</option>
+        </select>
+       </div>
+        <div class="col-md-2"><input type="text" class="form-control" formControlName="price" placeholder="Price"/></div>
+        <div class="col-md-2"><select class="form-control" formControlName="toppings">
+           <option *ngFor="let topping of toppingList" value="{{topping}}">{{topping}}</option>
+
+         
+       </select>
+      </div>
+      <div class="col-md-2"><input type="text" class="form-control" formControlName="quantity" placeholder="quantity"/></div>
+        <div class="col-md-2"><input type="submit" class="form-control btn btn-success" name="submit" value="Add Pizza"/></div>
+       </div>
+    </div>
+  
+</form>
+
+
+
+<table class="table table-border table-hover mt-5 bg-light text-center">
+   <thead>
+      
+       <tr>
+           <th>Name</th>
+           <th>Size</th>
+           <th>Price</th>
+           <th>Toppings</th>
+           <th>Action</th>
+       </tr>
+   </thead>
+  
+   <tbody>
+  
+       <!-- <tr *ngFor="let dynamic of dynamicArray; let i = index;" id="pizzaRow">  
+         
+           <td>    
+               <input [(ngModel)]="dynamicArray[i].name" class="form-control" type="text" name="name" value=""/>    
+             </td>     
+             <td>    
+               <input [(ngModel)]="dynamicArray[i].size" class="form-control" type="text" name="size"/>    
+             </td>    
+             <td>    
+               <input [(ngModel)]="dynamicArray[i].price" class="form-control" type="text" name="price"/>    
+             </td>  
+             <td>test</td>  
+             <td (click)="deleteRow(i)">    
+             <button class="btn btn-danger btn-sm">Remove</button>  <button class="btn btn-primary btn-sm">Save</button>
+             </td>  
+       </tr> -->
+
+      
+        
+  
+       <tr *ngFor="let pizza of allPizza">
+           <td>{{pizza.name}}</td>
+           <td>{{pizza.size}}</td>
+           <td>{{pizza.price}}</td>
+           <td>{{pizza.toppings}}</td>
+           <td><a routerLink="/pizza/{{pizza._id}}" routerLinkActive="router-link-active" class="btn btn-primary btn-sm">Edit</a> <button class="btn btn-danger btn-sm" id="{{pizza._id}}" (click)="deletePizza($event)">Delete</button></td>
+       </tr>
+   </tbody>
+
+</table>
+

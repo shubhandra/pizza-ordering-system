@@ -41,6 +41,7 @@ exports.getPizza = async(req, res) => {
 //****************Creating or posting Document using Mongoose************** */
 
 exports.createPizza = async(req, res) => {
+   // console.log(req.user);
     try {
         if (req.user.role === "admin") {
             const newPizza = await Pizza.create(req.body);
@@ -59,6 +60,7 @@ exports.createPizza = async(req, res) => {
             message: err,
         });
     }
+
 };
 
 //****************Updating or editing Document using Mongoose************** */
@@ -89,6 +91,8 @@ exports.updatePizza = async(req, res) => {
 
 //****************Deleting Document using Mongoose************** */
 exports.deletePizza = async(req, res) => {
+
+  
     try {
         if (req.user.role === "admin") {
             const pizza = await Pizza.findByIdAndDelete(req.params.id);

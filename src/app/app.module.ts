@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatCardModule } from '@angular/material/card';
@@ -23,22 +23,34 @@ import { RegisterComponent } from './components/register/register.component';
 import { LoginComponent } from './components/login/login.component';
 import { UserDashboardComponent } from './components/user-dashboard/user-dashboard.component';
 import { AdminDashboardComponent } from './components/admin-dashboard/admin-dashboard.component';
+import { PizzaEditComponent } from './components/pizza-edit/pizza-edit.component';
+
+
 import { PizzaListComponent } from './components/pizza-list/pizza-list.component';
 import { PizzaComponent } from './components/pizza-list/pizza/pizza.component';
+import { ManagepizzaComponent } from './components/managepizza/managepizza.component';
 
 @NgModule({
   declarations: [
     AppComponent,
+<<<<<<< HEAD
     OrderComponent,
     ShowUserComponent,
+=======
+    PizzaComponent,
+   
+>>>>>>> master
     RegisterComponent,
     LoginComponent,
     AdminDashboardComponent,
     UserDashboardComponent,
+    PizzaEditComponent,
     PizzaListComponent,
     PizzaComponent,
+    ManagepizzaComponent,
   ],
   imports: [
+    ReactiveFormsModule ,
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
