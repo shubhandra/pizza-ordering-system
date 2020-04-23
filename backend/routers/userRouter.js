@@ -57,7 +57,7 @@ router.post('/users/me/logout', auth, async (req, res) => {
             return token.token != req.token
         })
         await req.user.save()
-        res.send("You have been logged out.")
+        res.send()
     } catch (error) {
         res.status(500).send(error)
     }
