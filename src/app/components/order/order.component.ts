@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import {MatTableDataSource} from '@angular/material/table';
 import { OrderModel } from '../../models/order-model';
-import { OrderServiceService } from '../../services/order-service.service';
+import { OrdersService } from '../../services/orders.service';
 import { filter } from 'rxjs/operators';
 import { OrderStatus } from '../../models/order-status';
 
 
 
-const ELEMENT_DATA: OrderModel[] = [];
+// const ELEMENT_DATA: OrderModel[] = [];
 
 @Component({
   selector: 'app-order',
@@ -25,7 +25,7 @@ export class OrderComponent implements OnInit {
   dataSource; 
 
   constructor(
-    private orderService: OrderServiceService
+    private orderService: OrdersService
   ) { }
 
   ngOnInit(): void {
@@ -44,23 +44,23 @@ export class OrderComponent implements OnInit {
   }
 
 
-  onClickMe(){
-    this.clickMessage = 'You are my hero!';
-  }
+  // onClickMe(){
+  //   this.clickMessage = 'order status!';
+  // }
 
-  onStatusSelected(val:any){
-    this.orderService.updateOrderStatus(val.userId,OrderStatus)
-    .subscribe(res=> {
-      let id = res['userId']            
-    },(err)=> {
-      console.log(err);
-    })
-    this.customFunction(val);
-  }
+  // onStatusSelected(val:any){
+  //   this.orderService.updateOrderStatus(val.userId,OrderStatus)
+  //   .subscribe(res=> {
+  //     let id = res['userId']            
+  //   },(err)=> {
+  //     console.log(err);
+  //   })
+  //   this.customFunction(val);
+  // }
 
-  customFunction(val:any){
-    this.modifiedStatus= "this vale"+val+"was selected from dropdown";
-  }
+  // customFunction(val:any){
+  //   this.modifiedStatus= "this vale"+val+"was selected from dropdown";
+  // }
    
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;

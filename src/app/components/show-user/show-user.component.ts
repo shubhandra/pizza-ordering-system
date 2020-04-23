@@ -2,7 +2,6 @@ import {Component, OnInit, ViewChild} from '@angular/core';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatTableDataSource} from '@angular/material/table';
 import { ShowUser } from '../../models/show-user';
-import { ShowUserService } from '../../services/show-user.service';
 import { AuthService } from '../../services/auth.service';
 // import { User } from 'src/app/models/user';
 
@@ -14,16 +13,16 @@ import { AuthService } from '../../services/auth.service';
 export class ShowUserComponent implements OnInit {
 
   dataSource; 
-  users = [];
+  users;
   // users: [];
-  displayedColumns: string[] = ['role', 'staus', 'orders', 'name','email'];
+  displayedColumns: string[] = ['role', 'staus', 'name','email'];
 
-  // @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
+  @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
 
-  constructor(private showUserService: ShowUserService, private authService: AuthService) { }
+  constructor(private authService: AuthService) { }
 
   ngOnInit(): void {
-    // this.dataSource.paginator = this.paginator;
+    this.dataSource.paginator = this.paginator;
     this.getUsers();
   }
 
@@ -37,6 +36,10 @@ export class ShowUserComponent implements OnInit {
       },
       err => console.log(err)
     )
-  } 
+  }
 
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
 }
