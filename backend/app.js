@@ -1,6 +1,7 @@
 const express = require('express');
 require('dotenv').config()
 const port = process.env.PORT
+const cors = require('cors');
 require('./db/db');
 
 //Import Routes Here
@@ -12,9 +13,9 @@ const app = express();
 app.use(express.json());
 
 //routes  start from here..
-app.use('/order/',routes);
+app.use('/order/',cors(),routes);
 app.use("/pizzas", pizzaRouter);
-app.use(userRouter);
+app.use(cors(),userRouter);
 
 app.listen(port, () => {
     console.log(`Server running on port ${port}`);
