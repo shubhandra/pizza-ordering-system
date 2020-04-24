@@ -3,6 +3,7 @@ import {MatPaginator} from '@angular/material/paginator';
 import {MatTableDataSource} from '@angular/material/table';
 import { ShowUser } from '../../models/show-user';
 import { AuthService } from '../../services/auth.service';
+import { ShowUsersService } from 'src/app/services/show-users.service';
 // import { User } from 'src/app/models/user';
 
 @Component({
@@ -15,11 +16,13 @@ export class ShowUserComponent implements OnInit {
   dataSource; 
   users;
   // users: [];
-  displayedColumns: string[] = ['role', 'staus', 'name','email'];
+  displayedColumns: string[] = ['role', 'staus', 'name','email','inactive','active'];
 
   // @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
 
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService,
+        private userService:ShowUsersService
+    ) { }
 
   ngOnInit(): void {
     // this.dataSource.paginator = this.paginator;
@@ -42,4 +45,15 @@ export class ShowUserComponent implements OnInit {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
+
+  chnageStsUser(sts,id){ 
+
+    console.log(sts);
+    console.log(id);
+    this.userService.userStsUpdate(sts,id).subscribe(r=>{ 
+            console.log(r);
+    });
+
+  }
+
 }

@@ -67,4 +67,18 @@ export class OrderComponent implements OnInit {
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
+
+  chnageStatus(sts,id){ 
+
+    this.orderService.orderStsUpdate(sts,id).subscribe(r=>{ 
+            console.log(r.data.status);
+            if(r.data.status === "delivered"){ 
+                console.log("ok");
+            }else{ 
+                console.log(r.data.status);
+            }
+    });
+
+  }
+
 }

@@ -1,6 +1,6 @@
-<!-- <div class="pb-1 mt-2"><button class="btn btn-sm btn-primary float-right">Add Topping</button> <button class="btn btn-sm btn-warning float-right" (click)="addRow()">Add Pizza</button></div><br> -->
-
-
+<br>
+<button [routerLink]="['/admin-dashboard']" mat-raised-button color="primary">Dashboard</button>
+<br>
 
 <form [formGroup]="pizzaForm" (ngSubmit)="addPizza()" class="mt-5 border bg-light p-3">
     <div class="col-md-12">
@@ -45,26 +45,6 @@
    </thead>
   
    <tbody>
-  
-       <!-- <tr *ngFor="let dynamic of dynamicArray; let i = index;" id="pizzaRow">  
-         
-           <td>    
-               <input [(ngModel)]="dynamicArray[i].name" class="form-control" type="text" name="name" value=""/>    
-             </td>     
-             <td>    
-               <input [(ngModel)]="dynamicArray[i].size" class="form-control" type="text" name="size"/>    
-             </td>    
-             <td>    
-               <input [(ngModel)]="dynamicArray[i].price" class="form-control" type="text" name="price"/>    
-             </td>  
-             <td>test</td>  
-             <td (click)="deleteRow(i)">    
-             <button class="btn btn-danger btn-sm">Remove</button>  <button class="btn btn-primary btn-sm">Save</button>
-             </td>  
-       </tr> -->
-
-      
-        
   
        <tr *ngFor="let pizza of allPizza">
            <td>{{pizza.name}}</td>
