@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
   loginMessage: boolean;
-  loginError: any;
+ public loginError: any;
 
   constructor(private aservice: AuthService, private router: Router) { }
 
@@ -27,7 +27,9 @@ export class LoginComponent implements OnInit {
 
         if(user.role === "admin") {
           this.router.navigate(['admin-dashboard']);
-        } else {
+        } 
+        
+        if(user.status === "active") {
           this.router.navigate(['user-dashboard']);
         }
        },
