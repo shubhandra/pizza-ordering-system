@@ -67,22 +67,7 @@ toppingList= [
 
   }
 
-  initItem(){ 
-    return this.fb.group({
-          name: [''],
-          size: [''],
-          price: ['']
-      });
-  }
-
-
-
-  addRow() {    
-
-     const control = <FormArray>this.pizzaForm.controls['itemRows'];
-     control.push(this.initItem());
-    }  
-
+ 
 get f() { return this.pizzaForm.controls; }
 
 /***********Add Pizza Function  */
@@ -129,14 +114,14 @@ get f() { return this.pizzaForm.controls; }
     
     this.pizzaService.deletePizza(value).subscribe(r=> { 
 
-      if(r=== true){ 
+      if(r === true){ 
         console.log(r);
+      }
         //Load PIZZA LIST WHEN PIZZA Deleted
         this.pizzaService.getAllPizza().subscribe(r=>{ 
           this.allPizza = r.data.pizzas;
            });
            //
-      }
     },
     error => {
       console.log(error);
