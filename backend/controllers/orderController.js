@@ -133,6 +133,9 @@ exports.delete = async (req, res) => {
 //Update order status using orderId As Parameter
 exports.updateStatus = async (req,res)=> {
 
+    console.log(req.params.id);
+    console.log(req.body);
+
     const getUpdateStatus = await Order.findByIdAndUpdate(req.params.id, req.body, { new: true });
 
     if (!getUpdateStatus) return res.status(400).json({
@@ -186,6 +189,38 @@ exports.ordersUser  =  async (req,res)=>{
     }
 }
 //end here
+
+///
+
+exports.getAllOrders  =  async (req,res)=>{
+       
+    const allOrders = await Order.find();
+
+    if (!allOrders) return res.status(400).json({
+            status:'Fail',
+            message:'No Orders Found'
+    });
+
+    try{ 
+        
+         res.status(200).json( 
+             allOrders
+        //      { 
+        //      success:'success',
+        //      allOrders
+        //  }
+         );
+
+    }catch(err){ 
+
+         res.status(200).json({ 
+             success:'fail',
+             message:'Not Orders Found'
+         });
+    }
+}
+
+
 
 
 
