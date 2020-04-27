@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Pizza } from 'src/app/models/pizza.model';
-import { CartService } from 'src/app/services/cart.service';
 import { MessengerService } from 'src/app/services/messenger.service';
+import { CartService } from 'src/app/services/cart.service';
 
 @Component({
   selector: 'app-pizza',
@@ -33,4 +33,4 @@ export class PizzaComponent implements OnInit {
     })
    
   }
-} 
+}

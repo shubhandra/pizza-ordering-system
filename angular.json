@@ -129,5 +129,8 @@
       }
     }
   },
-  "defaultProject": "pizza-ordering-system"
+  "defaultProject": "pizza-ordering-system",
+  "cli": {
+    "analytics": "d7e2369b-118b-4671-83d7-860c39261153"
+  }
 }

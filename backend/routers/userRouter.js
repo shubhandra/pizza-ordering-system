@@ -41,7 +41,7 @@ router.get('/users/me', auth, async(req, res) => {
 router.get('/users/all', auth, async(req, res) => {
   try {
       if(req.user.role === "admin") {
-          res.send(await User.find());
+          res.send(await User.find().where('role').equals('user'));
       } else {
           res.send("Only admin can view all users");
       }
@@ -57,7 +57,7 @@ router.post('/users/me/logout', auth, async (req, res) => {
             return token.token != req.token
         })
         await req.user.save()
-        res.send("You have been logged out.")
+        res.send()
     } catch (error) {
         res.status(500).send(error)
     }
@@ -73,5 +73,32 @@ router.post('/users/me/logoutfromall', auth, async(req, res) => {
         res.status(500).send(error)
     }
 })
+
+//change status active ,inactive
+
+router.patch('/users/sts/:id', auth, async(req, res) => {
+    console.log(req.params.id);
+    console.log(req.body);
+
+    const getUpdateStatus = await User.findByIdAndUpdate(req.params.id, req.body, { new: true });
+
+    try {
+        res.status(200).json({
+            status: 'Success',
+            Message: 'Status Updated Successfully',
+            data: getUpdateStatus
+
+        });
+
+    } catch (err) {
+        res.status(401).json({
+            status: 'fail',
+            Message: 'Status Not Updated '
+        });
+
+    }
+});
+
+
 
 module.exports = router
