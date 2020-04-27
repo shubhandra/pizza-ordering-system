@@ -68,12 +68,16 @@ export class OrderComponent implements OnInit {
   }
 
 
-  chnageStatus(sts,id){ 
+  chnageStatus(e,sts,id){ 
+
+    var target = e.target || e.srcElement || e.currentTarget;
 
     this.orderService.orderStsUpdate(sts,id).subscribe(r=>{ 
             console.log(r.data.status);
             if(r.data.status === "delivered"){ 
                 console.log("ok");
+                target.disabled = true;
+              
             }else{ 
                 console.log(r.data.status);
             }
